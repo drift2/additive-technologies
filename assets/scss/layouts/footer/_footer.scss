@@ -13,9 +13,10 @@
 // -----------------------------------------------------------------------------
 
 .footer {
-    background-color: $footer-background;
-    border-top: container("border");
+    background: $footer-background url(../img/footer-bg.jpg) no-repeat center center;
+    background-size: cover;
     padding: spacing("double") 0;
+    color: #fff;
 }
 
 .footer-info {
@@ -25,7 +26,7 @@
 
 .footer-info-col {
     @include grid-column(12);
-    color: stencilColor("color-textSecondary");
+    color: rgba(255,255,255,.8);
     display: inline-block;
     float: none;
     font-size: fontSize("base"); // 2
@@ -53,7 +54,13 @@
 
 .footer-info-col--small {
     @include breakpoint("medium") {
-        width: width("2/12");
+        width: width("4/12");
+    }
+}
+
+.footer-info-col--med {
+    @include breakpoint("medium") {
+        width: width("6/12");
     }
 }
 
@@ -88,6 +95,7 @@
     color: $footer-heading-fontColor;
     font-size: fontSize("base");
     text-transform: inherit;
+    font-weight: 900;
 }
 
 .footer-info-list {
@@ -95,7 +103,7 @@
     margin-left: 0;
 
     a {
-        color: stencilColor("color-textSecondary");
+        color: rgba(255,255,255,.8);
         text-decoration: none;
 
         // scss-lint:disable NestingDepth
@@ -110,17 +118,17 @@
     text-align: center;
 
     @include breakpoint("small") {
-        text-align: left;
+        text-align: center;
     }
 
     > .powered-by {
-        color: stencilColor("color-textSecondary");
+        color: rgba(255,255,255,.8);
         font-size: fontSize("tiny");
         margin: 0;
     }
 
     a {
-        color: stencilColor("color-textSecondary");
+        color: rgba(255,255,255,.8);
         text-decoration: none;
 
         // scss-lint:disable NestingDepth
@@ -165,4 +173,16 @@
 
 .footer-newsletter-summary {
     text-align: left;
+}
+
+.footer-contact{
+	text-align: center;
+}
+
+.footer-icons{
+	text-align: right;
+}
+.footicon{
+	color: rgba(255,255,255,.5) !important;
+	margin: 0 5px;
 }

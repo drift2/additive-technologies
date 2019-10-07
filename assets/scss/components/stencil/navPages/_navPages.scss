@@ -16,7 +16,7 @@
 // Shared styles for sub page navigation
 // -----------------------------------------------------------------------------
 
-%navPage-childList {
+navPage-childList {
     border-left: 1px solid $navPage-childList-borderColor;
     margin: spacing("quarter") spacing("half");
     padding-left: spacing("half");
@@ -38,13 +38,11 @@
 
 .navPages-container {
     // scss-lint:disable VendorPrefix
-    bottom: 0;
     display: none;
+    width: 80%;
+    float: right;
     height: 100%;
-    left: 0;
     -webkit-overflow-scrolling: touch;
-    position: absolute;
-    right: 0;
     z-index: zIndex("lower");
 
     @include breakpoint("medium") {
@@ -52,13 +50,17 @@
         display: block;
         height: auto;
         padding: 0;
-        position: relative;
     }
 
     &.is-open {
         display: block;
         padding-top: $header-height;
         z-index: 0;
+        width: 270px;
+        float: left;
+        position: fixed;
+        top: 51px;
+        left: 0;
     }
 }
 
@@ -67,7 +69,7 @@
 // -----------------------------------------------------------------------------
 
 .navPages {
-    background-color: $navPages-backgroundColor;
+    background-color: #f8f8f8;
     height: 100%;
     overflow-y: auto;
     padding: spacing("single");
@@ -79,7 +81,7 @@
         font-size: 0; // 1
         overflow-y: visible;
         padding: 0;
-        text-align: center;
+        text-align: right;
     }
 
     ul {
@@ -188,18 +190,17 @@
 .navPages-action {
     color: stencilColor("navPages-color");
     display: block;
-    font-size: fontSize("smaller");
-    font-weight: fontWeight("bold");
+    font-size: 17px;
+    font-weight: 400;
     padding: spacing("half") 0;
     text-decoration: none;
-    text-transform: uppercase;
 
     @include breakpoint("medium") {
         display: inline-block;
-        padding: spacing("half") (spacing("half") + spacing("quarter")) (spacing("half") + spacing("quarter"));
+        margin: 10px 15px 15px 15px;
 
         &.is-open {
-            background-color: stencilColor("navPages-subMenu-backgroundColor");
+            border-bottom: solid 1px stencilColor("navPages-color-hover");
 
             // scss-lint:disable NestingDepth
             svg {
@@ -218,6 +219,20 @@
             stroke: stencilColor("navPages-color-hover");
         }
     }
+    
+    
+    &.activePage {
+        color: stencilColor("navPages-color-hover");
+        border-bottom: solid 1px stencilColor("navPages-color-hover");
+
+        // scss-lint:disable NestingDepth
+        svg {
+            fill: stencilColor("navPages-color-hover");
+            stroke: stencilColor("navPages-color-hover");
+        }
+    }
+    
+    
 
     svg {
         fill: stencilColor("navPages-color");
@@ -284,7 +299,7 @@
 
     @include breakpoint("medium") {
         // scss-lint:disable ImportantRule
-        background-color: stencilColor("navPages-subMenu-backgroundColor");
+        background-color: rgba( stencilColor("navPages-subMenu-backgroundColor"), .95 );
         padding: spacing("single") spacing("single") (spacing("single") + spacing("half")) !important;
         position: absolute;
         text-align: left;
@@ -349,8 +364,12 @@
         }
 
         > .navPage-subMenu-action {
-            border-bottom: 1px solid stencilColor("navPages-subMenu-separatorColor");
+            border-bottom: 1px solid rgba( stencilColor("navPages-subMenu-separatorColor"), .8 );
             margin-bottom: spacing("half") + spacing("quarter");
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .navPage-subMenu-action:hover {
+            color: rgba(255, 255, 255, 1);
         }
     }
 }
@@ -370,7 +389,7 @@
         .navPage-subMenu-action:hover {
             background: $navPage-subMenu-item--is-highlighted-background;
             color: $navPage-subMenu-item--is-highlighted-color;
-            font-weight: 500;
+            font-weight: 400;
             opacity: 0.3;
         }
     }
@@ -395,7 +414,7 @@
 }
 
 .navPage-childList-action {
-    font-weight: fontWeight("normal");
+    font-weight: 400;
     padding: 0 0 spacing("quarter");
 }
 
